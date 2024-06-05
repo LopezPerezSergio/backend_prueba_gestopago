@@ -20,4 +20,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::post('gestopago/authenticate', [GestoPagoController::class, 'authenticate']);
-Route::post('gestopago/authenticate', [GestoPagoController::class, 'authenticate']);
+Route::get('gestopago/validateMe', [GestoPagoController::class, 'validateMe']);
+Route::get('gestopago/getProductList', [GestoPagoController::class, 'getProductList']);
+Route::post('gestopago/sendTx', [GestoPagoController::class, 'sendTx']);
+Route::post('gestopago/confirmTx', [GestoPagoController::class, 'confirmTx']);

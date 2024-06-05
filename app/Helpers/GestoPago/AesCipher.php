@@ -14,17 +14,17 @@ class AesCipher
         self::$secretIV = ENV('AES_SECRET_IV');
     }
 
-    public static function encrypt($text)
+    public static function encrypt($json)
     {
         self::initialize();
-        $output = openssl_encrypt($text, self::CIPHER, base64_decode(self::$secretKey), OPENSSL_RAW_DATA, base64_decode(self::$secretIV));
+        $output = openssl_encrypt($json, self::CIPHER, base64_decode(self::$secretKey), OPENSSL_RAW_DATA, base64_decode(self::$secretIV));
         return base64_encode($output);
     }
 
-    public static function decrypt($cypherText)
+    public static function decrypt($cypherJson)
     {
         self::initialize();
-        $output = openssl_decrypt(base64_decode($cypherText), self::CIPHER, base64_decode(self::$secretKey), OPENSSL_RAW_DATA, base64_decode(self::$secretIV));
+        $output = openssl_decrypt(base64_decode($cypherJson), self::CIPHER, base64_decode(self::$secretKey), OPENSSL_RAW_DATA, base64_decode(self::$secretIV));
         return $output;
     }
 
